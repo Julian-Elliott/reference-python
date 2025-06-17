@@ -1,0 +1,17 @@
+title: Python Reference Hub
+description: Comprehensive Python cheatsheets and guides - where preparation meets opportunity
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# GitHub Pages settings
+url: ""
+baseurl: ""
+
+# Social links
+github_username: yourusername
+
+# Build settings
+markdown: kramdown
+highlighter: rouge

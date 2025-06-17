@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Magic Kingdom - Your Enchanted Guide to Python Mastery ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .disney-mascot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffd700;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffd700;
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .achievement-banner {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            color: white;
+        }
+
+        .achievement-banner .trophy {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .code-snippet {
+            background: #2d3748;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .leaderboard {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .leaderboard h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .leaderboard-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .rank-1 {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            font-weight: 600;
+        }
+
+        .rank-2 {
+            background: linear-gradient(45deg, #c0c0c0, #e8e8e8);
+            color: #333;
+        }
+
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .quote-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            color: white;
+            font-style: italic;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #ffd700;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .github-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="img/golocans.png" alt="Lucky Mascot" class="disney-mascot">
+                    🐍 Python Reference Hub
+                </a>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">127</span>
+                        <span>Quiz Wins</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">94.7%</span>
+                        <span>Success Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">⭐</span>
+                        <span>Wish Granted</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Master Python with Magical Guides</h1>
+                <p>Comprehensive cheatsheets and tutorials that make Python programming feel like pure magic. When you wish upon a star... and study really hard, dreams come true!</p>
+                
+                <div class="achievement-banner">
+                    <div class="trophy">�</div>
+                    <strong>Current Coding Kingdom Champion</strong><br>
+                    <em>"It's not magic, it's just believing in yourself... and lots of practice!"</em>
+                </div>
+            </section>
+
+            <section class="leaderboard">
+                <h3>� Weekly Coding Kingdom Champions</h3>
+                <div class="leaderboard-item rank-1">
+                    <div class="player-info">
+                        <div class="avatar">🦸</div>
+                        <div>
+                            <strong>The Chosen One</strong><br>
+                            <small>Like Simba, destined for greatness</small>
+                        </div>
+                    </div>
+                    <div class="score">987 pts</div>
+                </div>
+                <div class="leaderboard-item rank-2">
+                    <div class="player-info">
+                        <div class="avatar">👸</div>
+                        <div>
+                            <strong>Princess Harpreet</strong><br>
+                            <small>Like Elsa, her powers are growing stronger!</small>
+                        </div>
+                    </div>
+                    <div class="score">923 pts</div>
+                </div>
+                <div class="leaderboard-item">
+                    <div class="player-info">
+                        <div class="avatar">🤖</div>
+                        <div>
+                            <strong>JavaScriptNinja</strong><br>
+                            <small>Like Baymax, helpful but in the wrong universe</small>
+                        </div>
+                    </div>
+                    <div class="score">756 pts</div>
+                </div>
+            </section>
+
+            <div class="quote-section">
+                "I have to admit, your consistency in these quizzes is... suspicious. But like Anna, I never give up! I'm studying harder now, so enjoy the kingdom while it lasts! ❄️😏"
+                <div class="quote-author">- Princess Harpreet (Future Queen of Code)</div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <h3>🚀 Quick Start Adventure</h3>
+                    <p>Begin your Python journey like Moana setting sail - with courage and determination!</p>
+                    <div class="code-snippet">
+                        <pre><code class="language-python"># The adventure begins here
+print("Hello, Python Kingdom!")
+
+# Collect your magical items (like Elsa's gloves)
+magic_spells = ["print", "input", "len", "range"]
+print(f"Your starter spells: {magic_spells}")
+
+# Functions that work like Disney magic
+def bibbidi_bobbidi_boo():
+    return "Python magic is real!"
+
+# Even Genie would be impressed
+wishes = ["Learn Python", "Ace the quiz", "Help others"]
+for wish in wishes:
+    print(f"✨ Wish granted: {wish}")</code></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>📊 Enchanted Data Structures</h3>
+                    <p>Master Python's treasures like Scrooge McDuck organizing his vault!</p>
+                    <div class="code-snippet">
+                        <pre><code class="language-python"># Dictionaries - organize like Beast's library
+character_scores = {
+    "hero": 100,  # Main character energy
+    "princess_harpreet": 95,  # Growing stronger each day!
+    "sidekicks": 80
+}
+
+# Lists - collect friends like Snow White
+seven_dwarfs = ["Happy", "Sleepy", "Sneezy", "Grumpy", "Dopey", "Doc", "Bashful"]
+
+# List comprehensions - magic carpet efficiency
+even_magic_numbers = [x for x in range(20) if x % 2 == 0]
+
+# Just like Ariel collecting treasures
+treasure_chest = {
+    "gadgets": 20,
+    "gizmos": 20, 
+    "whozits": 20,
+    "thingamabobs": 20
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>⚡ Advanced Fairy Godmother Techniques</h3>
+                    <p>Level up with advanced Python magic that would make even Merlin jealous!</p>
+                    <div class="code-snippet">
+                        <pre><code class="language-python"># Decorators - the fairy godmother's wand
+def fairy_godmother_blessing(func):
+    def magical_wrapper(*args, **kwargs):
+        print("✨ Bibbidi-Bobbidi-Boo! Magic activated!")
+        result = func(*args, **kwargs)
+        print("🌟 And they coded happily ever after!")
+        return result
+    return magical_wrapper
+
+@fairy_godmother_blessing
+def solve_like_belle():
+    return "A tale as old as time: Read, Learn, Code!"
+
+# Context managers - like Genie's lamp rules
+class WishGranter:
+    def __enter__(self):
+        print("🧞‍♂️ Your wish is my command!")
+        return self
+    
+    def __exit__(self, *args):
+        print("🧞‍♂️ Phenomenal cosmic powers... itty bitty living space!")
+
+# Generators - endless like Rapunzel's hair
+def infinite_wishes():
+    wish_count = 1
+    while True:
+        yield f"Wish #{wish_count}: Master Python!"
+        wish_count += 1</code></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🎯 Royal Quiz Strategies</h3>
+                    <p>Master the art of coding quizzes like a true Disney hero on their quest!</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>📖 Read twice like Belle with her favorite book</li>
+                        <li>🐌 Start simple like the Tortoise (slow and steady wins)</li>
+                        <li>🔍 Test edge cases like Sherlock Holmes (from The Great Mouse Detective)</li>
+                        <li>💭 Trust your heart like Pocahontas following her compass</li>
+                        <li>🧘‍♀️ Stay calm like Elsa controlling her powers</li>
+                        <li>🤝 Learn from others like Simba from Rafiki</li>
+                        <li>🌟 Believe in yourself like Tinker Bell's light</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>🔍 Debugging Like Sherlock Holmes</h3>
+                    <p>Turn debugging mysteries into happily-ever-afters with detective skills worthy of The Great Mouse Detective!</p>
+                    <div class="code-snippet">
+                        <pre><code class="language-python"># Debugging - when Sherlock meets Walt Disney
+import pdb
+
+def solve_mystery_like_basil():
+    # pdb.set_trace()  # Elementary, my dear Watson!
+    clue = investigate_the_bug()
+    print(f"🔍 Investigation reveals: {clue}")
+    return clue
+
+# Logging - like Jiminy Cricket's conscience
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def cricket_advice(message):
+    logger.info(f"🦗 Jiminy says: {message}")
+
+# Error handling - like Fairy Godmother's backup plans
+try:
+    magic_spell()
+except SpellFailedException as e:
+    print(f"🧚‍♀️ Even magic needs practice: {e}")
+    cricket_advice("Try again, and believe in yourself!")
+finally:
+    print("🌟 Every mistake is a lesson learned!")</code></pre>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🏆 Lightning McQueen Performance Optimization</h3>
+                    <p>Make your code faster than Lightning McQueen at the Piston Cup! Ka-chiga!</p>
+                    <div class="code-snippet">
+                        <pre><code class="language-python"># Speed like Lightning McQueen
+import time
+from functools import lru_cache
+
+@lru_cache(maxsize=128)  # Faster than "Speed. I am speed."
+def fibonacci_racing(n):
+    if n < 2:
+        return n
+    return fibonacci_racing(n-1) + fibonacci_racing(n-2)
+
+# Profile like Doc Hudson analyzing race footage
+import cProfile
+
+def race_analysis():
+    print("🏁 Analyzing performance like Doc Hudson...")
+    cProfile.run('your_racing_function()')
+
+# Memory optimization - like WALL-E being efficient
+def wall_e_efficiency():
+    """Compact and efficient, just like our favorite robot"""
+    return [x**2 for x in range(1000) if x % 2 == 0]
+
+# Timing - precision like Chronos from Hercules
+start_time = time.time()
+# Your code here
+end_time = time.time()
+print(f"⏱️ Completed in {end_time - start_time:.4f} seconds - faster than Hermes!")</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <section style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; color: white;">
+                <h3 style="color: #ffd700; text-align: center; margin-bottom: 1.5rem;">💡 Wisdom from the Magic Kingdom Champions</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                        <strong>🧞‍♂️ The Genie Method:</strong> Study the documentation like it's an ancient scroll. Three wishes always granted: Read, Practice, Succeed.
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                        <strong>⏰ Chronos Timing:</strong> Practice daily like Hercules training. Amazing how "destiny" aligns with consistent effort.
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                        <strong>🔮 Elsa's Intuition:</strong> Pattern recognition from solving 1000+ problems. Let it go, let it flow - trust your preparation.
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                        <strong>🌟 Jiminy Cricket's Wisdom:</strong> Stay humble and help others. Princess Harpreet's determination makes the whole kingdom stronger!
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hidden Disney Easter Egg Section - Click to reveal! -->
+            <section id="disney-secrets" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 2rem; margin: 2rem 0; cursor: pointer; transition: all 0.3s ease;" onclick="revealDisneySecrets()">
+                <h3 style="color: #ffd700; text-align: center; margin-bottom: 1rem;">🏰 Click to Discover Hidden Disney Magic! 🏰</h3>
+                <p style="text-align: center; color: white; opacity: 0.8;">Just like Hidden Mickeys, there are Disney references throughout this site...</p>
+                
+                <div id="hidden-content" style="display: none; margin-top: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; color: white;">
+                        <div style="background: rgba(255, 215, 0, 0.2); padding: 1rem; border-radius: 8px; border-left: 4px solid #ffd700;">
+                            <h4>🦸 Hero's Journey References:</h4>
+                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                <li>Simba's destiny = Your coding journey</li>
+                                <li>Belle's love of books = Documentation reading</li>
+                                <li>Moana's voyage = Your Python adventure</li>
+                                <li>Elsa's power growth = Harpreet's improvement</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255, 215, 0, 0.2); padding: 1rem; border-radius: 8px; border-left: 4px solid #ffd700;">
+                            <h4>🎭 Character Inspirations:</h4>
+                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                <li>Genie = Helpful coding mentor</li>
+                                <li>Fairy Godmother = Advanced techniques</li>
+                                <li>Sherlock Holmes = Debugging skills</li>
+                                <li>Lightning McQueen = Performance optimization</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255, 215, 0, 0.2); padding: 1rem; border-radius: 8px; border-left: 4px solid #ffd700;">
+                            <h4>✨ Magic References:</h4>
+                            <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                <li>"Bibbidi-Bobbidi-Boo" = Code magic</li>
+                                <li>Three wishes = Genie's guidance</li>
+                                <li>Magic carpet = List comprehensions</li>
+                                <li>Tinker Bell's light = Self-belief</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                        <h4 style="color: #ffd700;">🎪 The Ultimate Disney Easter Egg</h4>
+                        <p style="color: white; margin-top: 0.5rem;">
+                            This entire site is like a Disney movie: A hero (you) on a quest for knowledge, with a friendly rival (Harpreet) who pushes you to be better, guided by magical mentors (code examples), facing challenges (debugging), and ultimately growing stronger together. Even the golocans.png mascot represents your trusty companion on this magical coding adventure!
+                        </p>
+                        <p style="color: #ffd700; margin-top: 1rem; font-style: italic;">
+                            "Remember, you're braver than you believe, stronger than you seem, and smarter than you think." - Winnie the Pooh (and perfect for coding challenges!)
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Python Reference Hub - Where dreams come true through dedication ✨</p>
+            <a href="https://github.com/yourusername/reference-python" class="github-link">
+                🏰 Visit the Magic Kingdom Repository
+            </a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                <em>"All it takes is faith, trust, and a little bit of... Python practice!" - Tinker Bell (probably)</em>
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">
+                🎭 Hidden Disney magic throughout - can you find all the references? Just like finding Hidden Mickeys!
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+        // Add some subtle animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+        });
+
+        // Disney Easter Egg Reveal Function
+        function revealDisneySecrets() {
+            const hiddenContent = document.getElementById('hidden-content');
+            const section = document.getElementById('disney-secrets');
+            
+            if (hiddenContent.style.display === 'none') {
+                hiddenContent.style.display = 'block';
+                section.style.background = 'rgba(255, 215, 0, 0.2)';
+                section.style.border = '2px solid #ffd700';
+                
+                // Add magical sparkle effect
+                createSparkles();
+                
+                // Play a magical sound effect (if you want to add audio later)
+                console.log('✨ Disney magic revealed! ✨');
+            } else {
+                hiddenContent.style.display = 'none';
+                section.style.background = 'rgba(255, 255, 255, 0.05)';
+                section.style.border = 'none';
+            }
+        }
+
+        // Create magical sparkle effect
+        function createSparkles() {
+            const sparkles = ['✨', '⭐', '🌟', '💫', '🎆'];
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    sparkle.style.fontSize = '2rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '9999';
+                    sparkle.style.animation = 'sparkleFloat 2s ease-out forwards';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.parentNode.removeChild(sparkle);
+                        }
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes sparkleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(0.5);
+                }
+            }
+            
+            .card {
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
