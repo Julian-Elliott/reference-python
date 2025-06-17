@@ -19,6 +19,38 @@
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/golocans.png') no-repeat;
+            background-size: 300px;
+            background-position: 95% 20%;
+            opacity: 0.03;
+            z-index: -1;
+            animation: subtleFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+            }
+            25% {
+                transform: translateY(-10px) translateX(5px);
+            }
+            50% {
+                transform: translateY(5px) translateX(-3px);
+            }
+            75% {
+                transform: translateY(-5px) translateX(8px);
+            }
         }
 
         .container {
@@ -55,11 +87,106 @@
         }
 
         .disney-mascot {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #ffd700;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+            animation: mascotGlow 3s ease-in-out infinite alternate;
+        }
+
+        .disney-mascot:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes mascotGlow {
+            from {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        .floating-mascot {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            background-image: url('img/golocans.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-mascot:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 1);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(-30px) rotate(1deg);
+            }
+        }
+
+        .mascot-trail {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: trailFade 1s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        .mascot-spotlight {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: spotlightPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes spotlightPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.1;
+            }
         }
 
         .stats {
@@ -89,6 +216,31 @@
             text-align: center;
             color: white;
             margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: url('img/golocans.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.05;
+            z-index: -1;
+            animation: heroMascotRotate 30s linear infinite;
+        }
+
+        @keyframes heroMascotRotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         .hero h1 {
@@ -416,8 +568,8 @@
                     <div class="player-info">
                         <div class="avatar">👸</div>
                         <div>
-                            <strong>Princess Harpreet</strong><br>
-                            <small>Like Elsa, her powers are growing stronger!</small>
+                            <strong>The Former Math Teacher</strong><br>
+                            <small>Like Elsa, her coding powers are growing stronger!</small>
                         </div>
                     </div>
                     <div class="score">923 pts</div>
@@ -436,7 +588,7 @@
 
             <div class="quote-section">
                 "I have to admit, your consistency in these quizzes is... suspicious. But like Anna, I never give up! I'm studying harder now, so enjoy the kingdom while it lasts! ❄️😏"
-                <div class="quote-author">- Princess Harpreet (Future Queen of Code)</div>
+                <div class="quote-author">- The Former Math Teacher (Future Queen of Code)</div>
             </div>
 
             <div class="content-grid">
@@ -504,13 +656,13 @@ for i, wish in enumerate(wishes, 1):
                         <pre><code class="language-python"># Dictionaries - organize like Beast's library
 character_scores = {
     "hero": 100,  # Main character energy
-    "princess_harpreet": 95,  # Growing stronger!
+    "former_teacher": 95,  # Growing stronger!
     "sidekicks": 80
 }
 
 # Access values like finding the right book
 print(f"Hero score: {character_scores['hero']}")
-print(f"Princess power: {character_scores['princess_harpreet']}")</code></pre>
+print(f"Former teacher's coding power: {character_scores['former_teacher']}")</code></pre>
                     </div>
                     
                     <button class="collapsible" onclick="toggleCollapsible(this)">
@@ -739,7 +891,7 @@ cProfile.run('your_racing_function()')</code></pre>
                         <strong>🔮 Elsa's Intuition:</strong> Pattern recognition from solving 1000+ problems. Let it go, let it flow - trust your preparation.
                     </div>
                     <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
-                        <strong>🌟 Jiminy Cricket's Wisdom:</strong> Stay humble and help others. Princess Harpreet's determination makes the whole kingdom stronger!
+                        <strong>🌟 Jiminy Cricket's Wisdom:</strong> Stay humble and help others. The former math teacher's determination makes the whole kingdom stronger!
                     </div>
                 </div>
             </section>
@@ -757,7 +909,7 @@ cProfile.run('your_racing_function()')</code></pre>
                                 <li>Simba's destiny = Your coding journey</li>
                                 <li>Belle's love of books = Documentation reading</li>
                                 <li>Moana's voyage = Your Python adventure</li>
-                                <li>Elsa's power growth = Harpreet's improvement</li>
+                                <li>Elsa's power growth = The former teacher's coding improvement</li>
                             </ul>
                         </div>
                         
@@ -785,7 +937,7 @@ cProfile.run('your_racing_function()')</code></pre>
                     <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
                         <h4 style="color: #ffd700;">🎪 The Ultimate Disney Easter Egg</h4>
                         <p style="color: white; margin-top: 0.5rem;">
-                            This entire site is like a Disney movie: A hero (you) on a quest for knowledge, with a friendly rival (Harpreet) who pushes you to be better, guided by magical mentors (code examples), facing challenges (debugging), and ultimately growing stronger together. Even the golocans.png mascot represents your trusty companion on this magical coding adventure!
+                            This entire site is like a Disney movie: A hero (you) on a quest for knowledge, with a friendly rival (the former math teacher) who pushes you to be better, guided by magical mentors (code examples), facing challenges (debugging), and ultimately growing stronger together. Even the golocans.png mascot represents your trusty companion on this magical coding adventure!
                         </p>
                         <p style="color: #ffd700; margin-top: 1rem; font-style: italic;">
                             "Remember, you're braver than you believe, stronger than you seem, and smarter than you think." - Winnie the Pooh (and perfect for coding challenges!)
@@ -795,6 +947,9 @@ cProfile.run('your_racing_function()')</code></pre>
             </section>
         </div>
     </main>
+
+    <!-- Floating Mascot -->
+    <div class="floating-mascot" id="floatingMascot" onclick="mascotClick()"></div>
 
     <footer>
         <div class="container">
@@ -821,7 +976,143 @@ cProfile.run('your_racing_function()')</code></pre>
                 card.style.animationDelay = `${index * 0.1}s`;
                 card.style.animation = 'fadeInUp 0.6s ease forwards';
             });
+
+            // Initialize floating mascot
+            initFloatingMascot();
+            
+            // Add parallax effect on scroll
+            window.addEventListener('scroll', parallaxEffect);
+            
+            // Add subtle mouse trail effect
+            document.addEventListener('mousemove', createMouseTrail);
         });
+
+        // Floating Mascot System
+        function initFloatingMascot() {
+            const mascot = document.getElementById('floatingMascot');
+            if (!mascot) return;
+            
+            // Start in bottom right
+            mascot.style.bottom = '20px';
+            mascot.style.right = '20px';
+            
+            // Move mascot to different positions every 10 seconds
+            setInterval(moveMascotToRandomPosition, 10000);
+        }
+
+        function moveMascotToRandomPosition() {
+            const mascot = document.getElementById('floatingMascot');
+            if (!mascot) return;
+            
+            const positions = [
+                { bottom: '20px', right: '20px', top: 'auto', left: 'auto' },
+                { top: '100px', right: '30px', bottom: 'auto', left: 'auto' },
+                { top: '50%', left: '20px', bottom: 'auto', right: 'auto' },
+                { bottom: '100px', left: '30px', top: 'auto', right: 'auto' },
+                { top: '200px', left: '50%', bottom: 'auto', right: 'auto' }
+            ];
+            
+            const randomPos = positions[Math.floor(Math.random() * positions.length)];
+            
+            Object.keys(randomPos).forEach(key => {
+                mascot.style[key] = randomPos[key];
+            });
+            
+            // Add a subtle trail effect
+            createMascotTrail(mascot);
+        }
+
+        function createMascotTrail(mascot) {
+            const trail = document.createElement('div');
+            trail.className = 'mascot-trail';
+            trail.style.left = mascot.offsetLeft + 30 + 'px';
+            trail.style.top = mascot.offsetTop + 30 + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                if (trail.parentNode) {
+                    trail.parentNode.removeChild(trail);
+                }
+            }, 1000);
+        }
+
+        function mascotClick() {
+            const mascot = document.getElementById('floatingMascot');
+            
+            // Create spotlight effect
+            const spotlight = document.createElement('div');
+            spotlight.className = 'mascot-spotlight';
+            spotlight.style.left = (mascot.offsetLeft - 60) + 'px';
+            spotlight.style.top = (mascot.offsetTop - 60) + 'px';
+            document.body.appendChild(spotlight);
+            
+            // Create sparkles around mascot
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = ['✨', '⭐', '🌟'][Math.floor(Math.random() * 3)];
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = (mascot.offsetLeft + Math.random() * 80) + 'px';
+                    sparkle.style.top = (mascot.offsetTop + Math.random() * 80) + 'px';
+                    sparkle.style.fontSize = '1.5rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '9999';
+                    sparkle.style.animation = 'sparkleFloat 1.5s ease-out forwards';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.parentNode.removeChild(sparkle);
+                        }
+                    }, 1500);
+                }, i * 100);
+            }
+            
+            // Remove spotlight after animation
+            setTimeout(() => {
+                if (spotlight.parentNode) {
+                    spotlight.parentNode.removeChild(spotlight);
+                }
+            }, 4000);
+            
+            // Move to new position
+            moveMascotToRandomPosition();
+        }
+
+        function parallaxEffect() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.card');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed / 10);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        function createMouseTrail(e) {
+            // Only create trail occasionally to avoid performance issues
+            if (Math.random() > 0.95) {
+                const trail = document.createElement('div');
+                trail.style.position = 'fixed';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                trail.style.width = '4px';
+                trail.style.height = '4px';
+                trail.style.background = 'rgba(255, 215, 0, 0.6)';
+                trail.style.borderRadius = '50%';
+                trail.style.pointerEvents = 'none';
+                trail.style.zIndex = '999';
+                trail.style.animation = 'trailFade 0.8s ease-out forwards';
+                document.body.appendChild(trail);
+                
+                setTimeout(() => {
+                    if (trail.parentNode) {
+                        trail.parentNode.removeChild(trail);
+                    }
+                }, 800);
+            }
+        }
 
         // Tab functionality
         function openTab(evt, tabName) {

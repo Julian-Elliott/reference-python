@@ -35,7 +35,7 @@ This collection represents hours of research, practice, and real-world applicati
 
 "The techniques in this repository helped me achieve a 94.7% success rate in programming quizzes. The combination of clear explanations and practical examples makes complex concepts feel intuitive." - Repository Author
 
-"I have to admit, these guides are really well put together. My quiz scores have improved significantly since I started using them. The competition is definitely heating up!" - Harpreet
+"I have to admit, these guides are really well put together. My quiz scores have improved significantly since I started using them. The competition is definitely heating up!" - A Former Math Teacher
 
 ## 🚀 Getting Started
 
