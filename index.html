@@ -607,30 +607,56 @@
                         </div>
                         
                         <div id="basics1" class="tab-content active">
-                            <pre><code class="language-python"># The adventure begins here
-print("Hello, Python Kingdom!")
+                            <pre><code class="language-python"># The adventure begins - basic Python magic
+print("Welcome to the Python Kingdom!")
 
-# Collect your magical items
-magic_spells = ["print", "input", "len", "range"]
-print(f"Your starter spells: {magic_spells}")
-
-# Even simple variables are magical
+# Variable enchantments (assignment)
 hero_name = "The Chosen One"
-quest_level = 1</code></pre>
+hero_level = 25
+magic_power = 99.5
+is_chosen = True
+
+# Discover the nature of your magic (type checking)
+print(type(hero_level))     # <class 'int'>
+print(type(magic_power))    # <class 'float'>
+print(type(is_chosen))      # <class 'bool'>
+
+# Transform magic types (type casting)
+level_str = str(hero_level)        # "25"
+power_int = int("42")              # 42
+magic_float = float("3.14")        # 3.14
+
+# Gather wisdom from users
+adventurer_name = input("What is your name, brave soul? ")
+print(f"Welcome, {adventurer_name}, to your coding quest!")</code></pre>
                         </div>
                         
                         <div id="functions1" class="tab-content">
-                            <pre><code class="language-python"># Functions that work like Disney magic
-def bibbidi_bobbidi_boo():
-                            return "Python magic is real!"
+                            <pre><code class="language-python"># Functions - your personal spell book
+def cast_healing_spell():
+    return "✨ Healing light surrounds you!"
 
-def genie_wisdom(question):
-    responses = {
-        "how": "Practice makes perfect!",
-        "why": "Because magic needs understanding!",
-        "when": "The perfect time is now!"
-    }
-    return responses.get(question, "Ask and you shall receive!")</code></pre>
+def greet_adventurer(name, title="Brave Soul"):
+    return f"Welcome, {title} {name}!"
+
+def calculate_damage(attack, defense=0):
+    damage = max(0, attack - defense)
+    return damage
+
+# Functions with multiple returns
+def level_up_stats():
+    return 10, 5, 3  # hp_gain, mana_gain, skill_points
+
+hp_gain, mana_gain, skills = level_up_stats()
+
+# Lambda functions - quick spell creation
+power_boost = lambda base, mult: base * mult
+quick_heal = lambda hp: min(100, hp + 25)
+
+# Usage examples
+print(greet_adventurer("Former Teacher", "Wise"))
+damage_dealt = calculate_damage(50, 15)  # 35 damage
+boosted_power = power_boost(20, 1.5)     # 30</code></pre>
                         </div>
                         
                         <div id="wishes1" class="tab-content">
@@ -657,32 +683,56 @@ for i, wish in enumerate(wishes, 1):
                     </button>
                     <div class="collapsible-content">
                         <pre><code class="language-python"># Dictionaries - organize like Beast's library
-character_scores = {
-    "hero": 100,  # Main character energy
-    "former_teacher": 95,  # Growing stronger!
-    "sidekicks": 80
+character_registry = {
+    "hero": {"level": 25, "hp": 100, "class": "Warrior"},
+    "former_teacher": {"level": 23, "hp": 95, "class": "Mage"},
+    "sidekick": {"level": 18, "hp": 80, "class": "Rogue"}
 }
 
-# Access values like finding the right book
-print(f"Hero score: {character_scores['hero']}")
-print(f"Former teacher's coding power: {character_scores['former_teacher']}")</code></pre>
+# Access nested information
+hero_level = character_registry["hero"]["level"]
+print(f"Hero is level {hero_level}")
+
+# Add new character
+character_registry["dragon"] = {"level": 50, "hp": 500, "class": "Boss"}
+
+# Iterate through all characters
+for name, stats in character_registry.items():
+    print(f"{name}: Level {stats['level']} {stats['class']}")
+
+# Check if character exists
+if "former_teacher" in character_registry:
+    print("The former math teacher joins the adventure!")</code></pre>
                     </div>
                     
                     <button class="collapsible" onclick="toggleCollapsible(this)">
-                        🌊 Lists - Snow White's Friends
+                        🌊 Lists - Your Adventuring Party
                         <span>+</span>
                     </button>
                     <div class="collapsible-content">
-                        <pre><code class="language-python"># Lists - collect friends like Snow White
-seven_dwarfs = ["Happy", "Sleepy", "Sneezy", "Grumpy", 
-                "Dopey", "Doc", "Bashful"]
+                        <pre><code class="language-python"># Lists - assemble your adventuring party
+party_members = ["Hero", "Former Teacher", "Wizard", "Rogue"]
 
-# Add new friends
-seven_dwarfs.append("Snow White")
-print(f"Now we have {len(seven_dwarfs)} friends!")
+# Meet your companions
+first_member = party_members[0]    # "Hero"
+last_member = party_members[-1]    # "Rogue"
 
-# List comprehensions - magic carpet efficiency
-even_magic = [x for x in range(20) if x % 2 == 0]</code></pre>
+# Select active party (slicing magic)
+active_party = party_members[1:3]  # ["Former Teacher", "Wizard"]
+
+# Recruit new allies
+party_members.append("Dragon Tamer")
+party_members.insert(2, "Healer")  # Insert at position 2
+
+# Party management
+party_size = len(party_members)
+party_members.remove("Wizard")     # Say farewell
+party_members.pop()                # Remove last member
+
+# List comprehension - power up the party!
+party_levels = [20, 23, 25, 18, 30]
+powered_up = [level + 5 for level in party_levels]
+elite_members = [level for level in party_levels if level >= 22]</code></pre>
                     </div>
                     
                     <button class="collapsible" onclick="toggleCollapsible(this)">
@@ -937,13 +987,12 @@ cProfile.run('your_racing_function()')</code></pre>
                         </div>
                     </div>
                     
-                    <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
-                        <h4 style="color: #ffd700;">🎪 The Ultimate Disney Easter Egg</h4>
-                        <p style="color: white; margin-top: 0.5rem;">
-                            This entire site is like a Disney movie: A hero (you) on a quest for knowledge, with a friendly rival (the former math teacher) who pushes you to be better, guided by magical mentors (code examples), facing challenges (debugging), and ultimately growing stronger together. Even the golocans.png mascot represents your trusty companion on this magical coding adventure!
-                        </p>
-                        <p style="color: #ffd700; margin-top: 1rem; font-style: italic;">
-                            "Remember, you're braver than you believe, stronger than you seem, and smarter than you think." - Winnie the Pooh (and perfect for coding challenges!)
+                    <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px; border: 3px solid #ffd700;">
+                        <h1 style="color: #ffd700; font-size: 3rem; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin: 0; letter-spacing: 2px;">
+                            I DON'T CHEAT IN KAHOOT QUIZZES
+                        </h1>
+                        <p style="color: white; margin-top: 1rem; font-size: 1.2rem; font-style: italic;">
+                            Just good preparation, pattern recognition, and a little Disney magic! ✨
                         </p>
                     </div>
                 </div>
