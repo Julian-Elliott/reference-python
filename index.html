@@ -159,6 +159,93 @@
             overflow-x: auto;
         }
 
+        .tabs {
+            margin: 1rem 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px 8px 0 0;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            color: #667eea;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .tab-button.active {
+            background: rgba(102, 126, 234, 0.3);
+            color: #4c51bf;
+            border-bottom-color: #ffd700;
+        }
+
+        .tab-content {
+            display: none;
+            background: #2d3748;
+            border-radius: 0 0 8px 8px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .collapsible {
+            background: rgba(102, 126, 234, 0.1);
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .collapsible.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .collapsible-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #2d3748;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .collapsible-content.active {
+            padding: 1rem;
+            max-height: 1000px;
+        }
+
         .leaderboard {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
@@ -356,84 +443,166 @@
                 <div class="card">
                     <h3>🚀 Quick Start Adventure</h3>
                     <p>Begin your Python journey like Moana setting sail - with courage and determination!</p>
-                    <div class="code-snippet">
-                        <pre><code class="language-python"># The adventure begins here
+                    
+                    <div class="tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="openTab(event, 'basics1')">✨ Magic Basics</button>
+                            <button class="tab-button" onclick="openTab(event, 'functions1')">🧞‍♂️ Genie Functions</button>
+                            <button class="tab-button" onclick="openTab(event, 'wishes1')">⭐ Three Wishes</button>
+                        </div>
+                        
+                        <div id="basics1" class="tab-content active">
+                            <pre><code class="language-python"># The adventure begins here
 print("Hello, Python Kingdom!")
 
-# Collect your magical items (like Elsa's gloves)
+# Collect your magical items
 magic_spells = ["print", "input", "len", "range"]
 print(f"Your starter spells: {magic_spells}")
 
-# Functions that work like Disney magic
+# Even simple variables are magical
+hero_name = "The Chosen One"
+quest_level = 1</code></pre>
+                        </div>
+                        
+                        <div id="functions1" class="tab-content">
+                            <pre><code class="language-python"># Functions that work like Disney magic
 def bibbidi_bobbidi_boo():
-    return "Python magic is real!"
+                            return "Python magic is real!"
 
-# Even Genie would be impressed
+def genie_wisdom(question):
+    responses = {
+        "how": "Practice makes perfect!",
+        "why": "Because magic needs understanding!",
+        "when": "The perfect time is now!"
+    }
+    return responses.get(question, "Ask and you shall receive!")</code></pre>
+                        </div>
+                        
+                        <div id="wishes1" class="tab-content">
+                            <pre><code class="language-python"># Three wishes - use them wisely!
 wishes = ["Learn Python", "Ace the quiz", "Help others"]
-for wish in wishes:
-    print(f"✨ Wish granted: {wish}")</code></pre>
+
+for i, wish in enumerate(wishes, 1):
+    print(f"✨ Wish #{i}: {wish}")
+    if i <= 3:
+        print("   🧞‍♂️ Granted!")
+    else:
+        print("   🧞‍♂️ Sorry, only 3 wishes!")</code></pre>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <h3>📊 Enchanted Data Structures</h3>
                     <p>Master Python's treasures like Scrooge McDuck organizing his vault!</p>
-                    <div class="code-snippet">
+                    
+                    <button class="collapsible" onclick="toggleCollapsible(this)">
+                        🏰 Dictionaries - Beast's Library
+                        <span>+</span>
+                    </button>
+                    <div class="collapsible-content">
                         <pre><code class="language-python"># Dictionaries - organize like Beast's library
 character_scores = {
     "hero": 100,  # Main character energy
-    "princess_harpreet": 95,  # Growing stronger each day!
+    "princess_harpreet": 95,  # Growing stronger!
     "sidekicks": 80
 }
 
-# Lists - collect friends like Snow White
-seven_dwarfs = ["Happy", "Sleepy", "Sneezy", "Grumpy", "Dopey", "Doc", "Bashful"]
+# Access values like finding the right book
+print(f"Hero score: {character_scores['hero']}")
+print(f"Princess power: {character_scores['princess_harpreet']}")</code></pre>
+                    </div>
+                    
+                    <button class="collapsible" onclick="toggleCollapsible(this)">
+                        🌊 Lists - Snow White's Friends
+                        <span>+</span>
+                    </button>
+                    <div class="collapsible-content">
+                        <pre><code class="language-python"># Lists - collect friends like Snow White
+seven_dwarfs = ["Happy", "Sleepy", "Sneezy", "Grumpy", 
+                "Dopey", "Doc", "Bashful"]
+
+# Add new friends
+seven_dwarfs.append("Snow White")
+print(f"Now we have {len(seven_dwarfs)} friends!")
 
 # List comprehensions - magic carpet efficiency
-even_magic_numbers = [x for x in range(20) if x % 2 == 0]
-
-# Just like Ariel collecting treasures
+even_magic = [x for x in range(20) if x % 2 == 0]</code></pre>
+                    </div>
+                    
+                    <button class="collapsible" onclick="toggleCollapsible(this)">
+                        🧜‍♀️ Ariel's Treasure Collection
+                        <span>+</span>
+                    </button>
+                    <div class="collapsible-content">
+                        <pre><code class="language-python"># Just like Ariel collecting treasures
 treasure_chest = {
     "gadgets": 20,
     "gizmos": 20, 
     "whozits": 20,
     "thingamabobs": 20
-}</code></pre>
+}
+
+# Count all treasures
+total_treasures = sum(treasure_chest.values())
+print(f"Ariel has {total_treasures} things!")</code></pre>
                     </div>
                 </div>
 
                 <div class="card">
                     <h3>⚡ Advanced Fairy Godmother Techniques</h3>
                     <p>Level up with advanced Python magic that would make even Merlin jealous!</p>
-                    <div class="code-snippet">
-                        <pre><code class="language-python"># Decorators - the fairy godmother's wand
+                    
+                    <div class="tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="openTab(event, 'decorators2')">🧚‍♀️ Decorators</button>
+                            <button class="tab-button" onclick="openTab(event, 'context2')">🪔 Genie's Lamp</button>
+                            <button class="tab-button" onclick="openTab(event, 'generators2')">💇‍♀️ Rapunzel's Hair</button>
+                        </div>
+                        
+                        <div id="decorators2" class="tab-content active">
+                            <pre><code class="language-python"># Decorators - the fairy godmother's wand
 def fairy_godmother_blessing(func):
     def magical_wrapper(*args, **kwargs):
-        print("✨ Bibbidi-Bobbidi-Boo! Magic activated!")
+        print("✨ Bibbidi-Bobbidi-Boo!")
         result = func(*args, **kwargs)
-        print("🌟 And they coded happily ever after!")
+        print("🌟 Happily ever after!")
         return result
     return magical_wrapper
 
 @fairy_godmother_blessing
 def solve_like_belle():
-    return "A tale as old as time: Read, Learn, Code!"
-
-# Context managers - like Genie's lamp rules
+    return "A tale as old as time!"</code></pre>
+                        </div>
+                        
+                        <div id="context2" class="tab-content">
+                            <pre><code class="language-python"># Context managers - like Genie's lamp rules
 class WishGranter:
     def __enter__(self):
         print("🧞‍♂️ Your wish is my command!")
         return self
     
     def __exit__(self, *args):
-        print("🧞‍♂️ Phenomenal cosmic powers... itty bitty living space!")
+        print("🧞‍♂️ Back to the lamp!")
 
-# Generators - endless like Rapunzel's hair
+# Usage
+with WishGranter() as genie:
+    print("I wish to master Python!")</code></pre>
+                        </div>
+                        
+                        <div id="generators2" class="tab-content">
+                            <pre><code class="language-python"># Generators - endless like Rapunzel's hair
 def infinite_wishes():
     wish_count = 1
     while True:
         yield f"Wish #{wish_count}: Master Python!"
-        wish_count += 1</code></pre>
+        wish_count += 1
+
+# Use carefully - it's infinite!
+wish_generator = infinite_wishes()
+for _ in range(3):
+    print(next(wish_generator))</code></pre>
+                        </div>
                     </div>
                 </div>
 
@@ -453,67 +622,106 @@ def infinite_wishes():
 
                 <div class="card">
                     <h3>🔍 Debugging Like Sherlock Holmes</h3>
-                    <p>Turn debugging mysteries into happily-ever-afters with detective skills worthy of The Great Mouse Detective!</p>
-                    <div class="code-snippet">
-                        <pre><code class="language-python"># Debugging - when Sherlock meets Walt Disney
+                    <p>Turn debugging mysteries into happily-ever-afters!</p>
+                    
+                    <button class="collapsible" onclick="toggleCollapsible(this)">
+                        🕵️ Elementary Debugging
+                        <span>+</span>
+                    </button>
+                    <div class="collapsible-content">
+                        <pre><code class="language-python"># Debugging - Elementary, my dear Watson!
 import pdb
 
-def solve_mystery_like_basil():
-    # pdb.set_trace()  # Elementary, my dear Watson!
+def solve_mystery():
+    # pdb.set_trace()  # Stop and investigate
     clue = investigate_the_bug()
     print(f"🔍 Investigation reveals: {clue}")
-    return clue
-
-# Logging - like Jiminy Cricket's conscience
+    return clue</code></pre>
+                    </div>
+                    
+                    <button class="collapsible" onclick="toggleCollapsible(this)">
+                        🦗 Jiminy Cricket's Logging
+                        <span>+</span>
+                    </button>
+                    <div class="collapsible-content">
+                        <pre><code class="language-python"># Logging - like Jiminy Cricket's conscience
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def cricket_advice(message):
     logger.info(f"🦗 Jiminy says: {message}")
-
-# Error handling - like Fairy Godmother's backup plans
+    
+cricket_advice("Always let your conscience be your guide!")</code></pre>
+                    </div>
+                    
+                    <button class="collapsible" onclick="toggleCollapsible(this)">
+                        🧚‍♀️ Fairy Godmother Error Handling
+                        <span>+</span>
+                    </button>
+                    <div class="collapsible-content">
+                        <pre><code class="language-python"># Error handling - backup magic spells
 try:
     magic_spell()
 except SpellFailedException as e:
     print(f"🧚‍♀️ Even magic needs practice: {e}")
-    cricket_advice("Try again, and believe in yourself!")
+    print("✨ Trying backup spell...")
 finally:
-    print("🌟 Every mistake is a lesson learned!")</code></pre>
+    print("🌟 Every mistake is a lesson!")</code></pre>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h3>🏆 Lightning McQueen Performance Optimization</h3>
-                    <p>Make your code faster than Lightning McQueen at the Piston Cup! Ka-chiga!</p>
-                    <div class="code-snippet">
-                        <pre><code class="language-python"># Speed like Lightning McQueen
-import time
+                    <h3>🏆 Lightning McQueen Performance</h3>
+                    <p>Make your code faster than Lightning McQueen! Ka-chiga!</p>
+                    
+                    <div class="tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="openTab(event, 'speed3')">🏁 Speed Optimization</button>
+                            <button class="tab-button" onclick="openTab(event, 'memory3')">🤖 WALL-E Efficiency</button>
+                            <button class="tab-button" onclick="openTab(event, 'timing3')">⏱️ Chronos Timing</button>
+                        </div>
+                        
+                        <div id="speed3" class="tab-content active">
+                            <pre><code class="language-python"># Speed like Lightning McQueen
 from functools import lru_cache
 
-@lru_cache(maxsize=128)  # Faster than "Speed. I am speed."
+@lru_cache(maxsize=128)  # "Speed. I am speed."
 def fibonacci_racing(n):
     if n < 2:
         return n
     return fibonacci_racing(n-1) + fibonacci_racing(n-2)
 
-# Profile like Doc Hudson analyzing race footage
+# Now it's lightning fast!
+print(fibonacci_racing(100))</code></pre>
+                        </div>
+                        
+                        <div id="memory3" class="tab-content">
+                            <pre><code class="language-python"># Memory optimization - like WALL-E
+def wall_e_efficiency():
+    """Compact and efficient, just like our robot"""
+    # Generator expression uses less memory
+    return (x**2 for x in range(1000) if x % 2 == 0)
+
+# Use it efficiently
+squares = wall_e_efficiency()
+first_five = [next(squares) for _ in range(5)]</code></pre>
+                        </div>
+                        
+                        <div id="timing3" class="tab-content">
+                            <pre><code class="language-python"># Timing - precision like Chronos from Hercules
+import time
 import cProfile
 
-def race_analysis():
-    print("🏁 Analyzing performance like Doc Hudson...")
-    cProfile.run('your_racing_function()')
-
-# Memory optimization - like WALL-E being efficient
-def wall_e_efficiency():
-    """Compact and efficient, just like our favorite robot"""
-    return [x**2 for x in range(1000) if x % 2 == 0]
-
-# Timing - precision like Chronos from Hercules
+# Time your functions
 start_time = time.time()
-# Your code here
+result = your_function()
 end_time = time.time()
-print(f"⏱️ Completed in {end_time - start_time:.4f} seconds - faster than Hermes!")</code></pre>
+print(f"⏱️ Completed in {end_time - start_time:.4f}s")
+
+# Profile like Doc Hudson
+cProfile.run('your_racing_function()')</code></pre>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -614,6 +822,42 @@ print(f"⏱️ Completed in {end_time - start_time:.4f} seconds - faster than He
                 card.style.animation = 'fadeInUp 0.6s ease forwards';
             });
         });
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            // Get the parent card of the clicked tab
+            const card = evt.currentTarget.closest('.card');
+            const tabContents = card.querySelectorAll('.tab-content');
+            const tabButtons = card.querySelectorAll('.tab-button');
+            
+            // Hide all tab contents
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Show the selected tab content
+            card.querySelector('#' + tabName).classList.add('active');
+            
+            // Add active class to the clicked button
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Collapsible functionality
+        function toggleCollapsible(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('span');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                element.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('active');
+                element.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
 
         // Disney Easter Egg Reveal Function
         function revealDisneySecrets() {
